@@ -18,6 +18,9 @@ body {
     max-width: 100%;
     display: flex;
     flex-direction: column;
+    top: 0; /* Se till att det ligger mot toppen av fönstret */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Grundpositionering - vi nollställer transform */
@@ -73,26 +76,38 @@ body {
 
 
 #controls {
+    width: 600px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    gap: 8px;
     justify-content: center;
-    padding: 15px;
-    background-color: #ffffffcc; /* lätt transparent vit */
+    padding: 12px;
+    background-color: #ffffffcc;
     border: 1px solid #ccc;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(4px); /* snygg glas-effekt */
-    margin-top: 10px;
+    backdrop-filter: blur(4px);
+    max-width: 600px;
+    font-size: 12px;
+    margin: 20px auto 0; /* Centrera under fönstren */
+    text-align: center;
 }
-
+/* Styling for each row in the controls */
+.control-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+/* Improve button styles */
 #controls button {
-    padding: 8px 16px;
+    padding: 6px 14px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: bold;
+    font-size: 12px;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
@@ -106,34 +121,66 @@ body {
     transform: scale(0.98);
 }
 
+/* Styling for sliders, inputs, and selects */
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f9f9f9;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+#controls input[type="range"] {
+    width: 50px; /* Halverar längden */
+}
+
+#controls select {
+    font-size: 12px;
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+}
+
+#controls input[type="number"] {
+    width: 40px; 
+    text-align: center;
+}
+
 #editor {
     width: 100%;
-    height: 150px;
-    font-size: 24px;
-    padding: 10px;
+    height: 100px;
+    font-size: 12px;
+    line-height: 1.6;
+    padding: 2px;
     border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #7e7e7e;
+    resize: vertical;
     overflow-y: auto;
 }
 
 #display {
-    width: 100%;
-    height: 100px;
+    width: 800px;
+    height: 300px;
     overflow: hidden;
     position: relative;
     border: 2px solid #000;
     background: white;
+    resize: both;
+    min-width: 200px;
+    min-height: 50px;
+    max-width: 100%;
+    max-height: 80vh;
 }
 
 #text {
-    position: absolute;
-    white-space: nowrap;
-}
-
-/* Slider & input styling */
-.slider-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    position: relative;
+    white-space: normal; /* Gör att texten radbryts automatiskt */
+    word-wrap: break-word; /* Bryt ord vid behov */
+    overflow-wrap: break-word; /* Se till att långa ord också bryts */
+    width: 100%; /* Säkerställ att texten fyller displayens bredd */
 }
 
 input[type="range"], input[type="number"] {
@@ -143,6 +190,7 @@ input[type="range"], input[type="number"] {
 /* Teman */
 body.light { background-color: #f0f0f0; color: #000; }
 
+/* Dark mode adjustments */
 body.dark {
     background-color: #1e1e1e;
     color: white;
@@ -155,12 +203,107 @@ body.dark #display {
     border-color: #666;
 }
 
+/* Fix slider background in dark mode */
+body.dark .slider-container {
+    background-color: #222; /* Dark gray instead of light gray */
+    border-color: #444;
+}
+
+/* Dark mode controls */
+body.dark #controls {
+    background-color: #222;
+    border-color: #444;
+    color: white;
+}
+
+/* Dark mode buttons */
+body.dark #controls button {
+    background-color: #555;
+    color: white;
+}
+
+body.dark #controls button:hover {
+    background-color: #777;
+}
+
+/* High Contrast Black/Yellow - Improved Visibility */
 body.high-contrast1 {
     background-color: black;
     color: yellow;
 }
 
+body.high-contrast1 #display {
+    background-color: black;
+    color: yellow;
+    border-color: yellow;
+}
+
+body.high-contrast1 #text {
+    color: yellow;
+}
+
+body.high-contrast1 #editor {
+    background-color: black;
+    color: white;
+    border-color: yellow;
+}
+
+/* Fix slider background color */
+body.high-contrast1 .slider-container {
+    background-color: #222; /* Dark gray instead of light gray */
+    border-color: yellow;
+}
+
+/* Fix control panel */
+body.high-contrast1 #controls {
+    background-color: black;
+    border-color: yellow;
+    color: yellow;
+}
+
+/* Fix buttons */
+body.high-contrast1 #controls button {
+    background-color: yellow;
+    color: black;
+}
+
+body.high-contrast1 #controls button:hover {
+    background-color: orange;
+}
+
+/* High Contrast White/Blue */
 body.high-contrast2 {
     background-color: white;
     color: blue;
+}
+
+body.high-contrast2 #display {
+    background-color: white;
+    color: blue;
+    border-color: blue;
+}
+
+body.high-contrast2 #text {
+    color: blue;
+}
+
+body.high-contrast2 #editor {
+    background-color: white;
+    color: blue;
+    border-color: blue;
+}
+
+body.high-contrast2 #controls {
+    background-color: white;
+    border-color: blue;
+    color: blue;
+}
+
+body.high-contrast2 #controls button {
+    background-color: blue;
+    color: white;
+}
+
+body.high-contrast2 #controls button:hover {
+    background-color: darkblue;
 }

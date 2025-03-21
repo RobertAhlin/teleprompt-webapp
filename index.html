@@ -13,49 +13,42 @@
             <div id="text"></div>
         </div>
 
-        <textarea id="editor">Skriv din text här...</textarea>
+        <textarea id="editor">Write you text here...</textarea>
         <div id="controls">
-            <button onclick="startScroll()">Start</button>
-            <button onclick="pauseScroll()">Pausa</button>
-            <button onclick="resetScroll()">Stopp</button>
-
-            <div class="slider-container">
-                <label>Textstorlek:</label>
-                <input type="range" id="textSize" min="10" max="100" value="24">
-                <input type="number" id="textSizeInput" min="10" max="100" value="24">
+            <!-- Rad 1: Start, Pausa, Stopp -->
+            <div class="control-row">
+                <button onclick="startScroll()">Start</button>
+                <button onclick="pauseScroll()">Pausa</button>
+                <button onclick="resetScroll()">Stopp</button>
             </div>
+        
+            <!-- Rad 2: Textstorlek, Hastighet, Visningshöjd -->
+            <div class="control-row">
+                <div class="slider-container">
+                    <label>Text size:</label>
+                    <input type="range" id="textSize" min="10" max="100" value="24">
+                    <input type="number" id="textSizeInput" min="10" max="100" value="24">
+                </div>
+                <div class="slider-container">
+                    <label>Speed:</label>
+                    <input type="range" id="speed" min="1" max="20" value="5">
+                    <input type="number" id="speedInput" min="1" max="20" value="5">
+                </div>
 
-            <div class="slider-container">
-                <label>Hastighet:</label>
-                <input type="range" id="speed" min="1" max="20" value="5">
-                <input type="number" id="speedInput" min="1" max="20" value="5">
             </div>
-
-            <div class="slider-container">
-                <label>Visningshöjd:</label>
-                <input type="range" id="displayHeight" min="50" max="500" value="100">
-                <input type="number" id="displayHeightInput" min="50" max="500" value="100">
-            </div>
-
-            <div class="slider-container">
-                <label>Position:</label>
-                <select id="positionSelector">
-                    <option value="top-left">Top Left</option>
-                    <option value="top-center" selected>Top Center</option>
-                    <option value="top-right">Top Right</option>
-                    <option value="bottom-left">Bottom Left</option>
-                    <option value="bottom-center">Bottom Center</option>
-                    <option value="bottom-right">Bottom Right</option>
+        
+            <!-- Rad 3: Position och Tema -->
+            <div class="control-row">               
+                <label>Theme:</label>
+                <select id="themeSelector">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="high-contrast1">Black/Yellow</option>
+                    <option value="high-contrast2">White/Blue</option>
                 </select>
             </div>
-
-            <select id="themeSelector">
-                <option value="light">Ljust läge</option>
-                <option value="dark">Mörkt läge</option>
-                <option value="high-contrast1">Högkontrast (Svart/Gul)</option>
-                <option value="high-contrast2">Högkontrast (Vit/Blå)</option>
-            </select>
         </div>
+        
     </div>
 
     <script src="script.js"></script>
