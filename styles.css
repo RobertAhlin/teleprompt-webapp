@@ -1,0 +1,87 @@
+/* Grundläggande styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    transition: background 0.3s, color 0.3s;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+#editor {
+    width: 100%;
+    height: 150px;
+    font-size: 24px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+}
+
+#display {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #000;
+    background: white;
+}
+
+#text {
+    position: absolute;
+    white-space: nowrap;
+}
+
+/* Slider & input styling */
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+input[type="range"], input[type="number"] {
+    width: 100px;
+}
+
+/* Teman */
+body.light { background-color: #f0f0f0; color: #000; }
+
+body.dark {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+body.dark #editor,
+body.dark #display {
+    background-color: #333;
+    color: white;
+    border-color: #666;
+}
+
+body.high-contrast1 {
+    background-color: black;
+    color: yellow;
+}
+
+body.high-contrast2 {
+    background-color: white;
+    color: blue;
+}

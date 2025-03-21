@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleprompter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+       
+        <div id="display">
+            <div id="text"></div>
+        </div>
+
+        <textarea id="editor">Skriv din text här...</textarea>
+        <div id="controls">
+            <button onclick="startScroll()">Start</button>
+            <button onclick="pauseScroll()">Pausa</button>
+            <button onclick="resetScroll()">Stopp</button>
+
+            <div class="slider-container">
+                <label>Textstorlek:</label>
+                <input type="range" id="textSize" min="10" max="100" value="24">
+                <input type="number" id="textSizeInput" min="10" max="100" value="24">
+            </div>
+
+            <div class="slider-container">
+                <label>Hastighet:</label>
+                <input type="range" id="speed" min="1" max="20" value="5">
+                <input type="number" id="speedInput" min="1" max="20" value="5">
+            </div>
+
+            <div class="slider-container">
+                <label>Visningshöjd:</label>
+                <input type="range" id="displayHeight" min="50" max="500" value="100">
+                <input type="number" id="displayHeightInput" min="50" max="500" value="100">
+            </div>
+
+            <select id="themeSelector">
+                <option value="light">Ljust läge</option>
+                <option value="dark">Mörkt läge</option>
+                <option value="high-contrast1">Högkontrast (Svart/Gul)</option>
+                <option value="high-contrast2">Högkontrast (Vit/Blå)</option>
+            </select>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
