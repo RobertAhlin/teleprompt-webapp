@@ -177,10 +177,10 @@ body {
 
 #text {
     position: relative;
-    white-space: normal; /* Gör att texten radbryts automatiskt */
-    word-wrap: break-word; /* Bryt ord vid behov */
-    overflow-wrap: break-word; /* Se till att långa ord också bryts */
-    width: 100%; /* Säkerställ att texten fyller displayens bredd */
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
 }
 
 input[type="range"], input[type="number"] {

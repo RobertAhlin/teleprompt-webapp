@@ -18,6 +18,27 @@ editor.addEventListener("input", function () {
     textElement.innerText = editor.value;
 });
 
+// Placeholder-textfunktion för editorn
+editor.addEventListener("focus", function () {
+    if (editor.value === "Write your text here...") {
+        editor.value = "";
+        editor.style.color = "#000"; // Normal textfärg
+    }
+});
+
+editor.addEventListener("blur", function () {
+    if (editor.value.trim() === "") {
+        editor.value = "Write your text here...";
+        editor.style.color = "#aaa"; // Gör placeholder-texten grå
+    }
+});
+
+// Initiera placeholder korrekt vid sidladdning
+if (editor.value.trim() === "") {
+    editor.value = "Write your text here...";
+    editor.style.color = "#aaa";
+}
+
 // Starta scrollning
 function startScroll() {
     if (isScrolling) return;
@@ -96,11 +117,13 @@ let savedTheme = localStorage.getItem("selectedTheme");
 if (savedTheme) {
     document.body.className = savedTheme;
     themeSelector.value = savedTheme;
+} else {
+    document.body.className = "dark";
+    themeSelector.value = "dark";
 }
 
 // Initiera värden
 adjustTextSize(textSizeSlider.value);
 adjustSpeed(speedSlider.value);
-textElement.innerText = editor.value;
 position = displayHeight.clientHeight / 2;
 textElement.style.transform = `translateY(${position}px)`;
