@@ -8,6 +8,8 @@ let speedInput = document.getElementById("speedInput");
 let displayHeightSlider = document.getElementById("displayHeight");
 let displayHeightInput = document.getElementById("displayHeightInput");
 let themeSelector = document.getElementById("themeSelector");
+let positionSelector = document.getElementById("positionSelector");
+let container = document.getElementById("container");
 
 let scrollSpeed = 5;
 let scrollInterval;
@@ -18,6 +20,19 @@ let isScrolling = false;
 editor.addEventListener("input", function() {
     textElement.innerText = editor.value;
 });
+
+positionSelector.addEventListener("change", function () {
+    updatePosition(this.value);
+});
+
+function updatePosition(position) {
+    // Ta bort tidigare positioneringsklasser
+    container.classList.remove(
+        "top-left", "top-center", "top-right",
+        "bottom-left", "bottom-center", "bottom-right"
+    );
+    container.classList.add(position);
+}
 
 // Starta scrollning
 function startScroll() {
@@ -113,3 +128,5 @@ adjustDisplayHeight(displayHeightSlider.value);
 textElement.innerText = editor.value;
 position = displayHeight.clientHeight / 2;
 textElement.style.transform = `translateY(${position}px)`;
+
+updatePosition(positionSelector.value);

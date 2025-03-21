@@ -13,18 +13,97 @@ body {
 }
 
 #container {
+    position: fixed;
+    gap: 1rem;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 80%;
 }
+
+/* Grundpositionering - vi nollställer transform */
+.position {
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+}
+
+.top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+    text-align: right;
+}
+
 
 #controls {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 10px;
     justify-content: center;
+    padding: 15px;
+    background-color: #ffffffcc; /* lätt transparent vit */
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px); /* snygg glas-effekt */
+    margin-top: 10px;
+}
+
+#controls button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#controls button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#controls button:active {
+    transform: scale(0.98);
 }
 
 #editor {
