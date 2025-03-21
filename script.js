@@ -22,7 +22,13 @@ editor.addEventListener("input", function () {
 editor.addEventListener("focus", function () {
     if (editor.value === "Write your text here...") {
         editor.value = "";
-        editor.style.color = "#000"; // Normal textfärg
+
+        // Sätt textfärgen beroende på aktuellt tema
+        if (document.body.classList.contains("dark") || document.body.classList.contains("high-contrast1")) {
+            editor.style.color = "#fff";
+        } else {
+            editor.style.color = "#000";
+        }
     }
 });
 
@@ -108,8 +114,18 @@ speedInput.addEventListener("input", function () {
 
 // Ändra tema och spara valet i `localStorage`
 themeSelector.addEventListener("change", function () {
-    document.body.className = this.value;
-    localStorage.setItem("selectedTheme", this.value);
+    const theme = this.value;
+    document.body.className = theme;
+    localStorage.setItem("selectedTheme", theme);
+
+    // Ändra textfärgen i editor beroende på innehåll och tema
+    if (editor.value === "Write your text here...") {
+        // placeholderläge
+        editor.style.color = (theme === "dark" || theme === "high-contrast1") ? "#fff" : "#aaa";
+    } else {
+        // användaren har börjat skriva
+        editor.style.color = (theme === "dark" || theme === "high-contrast1") ? "#fff" : "#000";
+    }
 });
 
 // Ladda sparat tema vid sidladdning
